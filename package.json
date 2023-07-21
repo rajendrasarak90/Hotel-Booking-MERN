@@ -1,0 +1,14 @@
+{
+  "name": "hotel-booking-mern",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd Frontend-React && npm run dev",
+    "build": "cd Frontend-React && npm run build",
+    "backend": "cd Backend-Node && node index.js"
+  },
+  "author": "Rajendra Sarak",
+  "license": "ISC"
+}
