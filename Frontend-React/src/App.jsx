@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 
-import IndexPage from "./pages/indexPage";
-import LoginPage from "./pages/LoginPage";
-import Layout from "./pages/Layout";
-import RegisterPage from "./pages/RegisterPage";
+import IndexPage from "./pages/IndexPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import Layout from "./pages/Layout.jsx";
+import RegisterPage from "./pages/RegisterPage.jsx";
 import axios from "axios";
 
 axios.defaults.baseURL = "http://localhost:8000";
