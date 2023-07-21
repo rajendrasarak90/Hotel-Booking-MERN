@@ -26,7 +26,7 @@ mongoose
   .then((done) => console.log("conected to DB"))
   .catch((err) => console.log("Error in conecting DB", err));
 
-app.get("/test", (req, res) => {
+app.get("/", (req, res) => {
   res.send("this is the response");
 });
 
