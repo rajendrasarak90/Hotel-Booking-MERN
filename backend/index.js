@@ -6,7 +6,7 @@ const dotenv = require("dotenv");
 
 const User = require("./models/User");
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 const bcryptSalt = bcrypt.genSaltSync(10);
 
 const app = express();
@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:5173",
+    origin: process.env.BASE_URL,
   })
 );
 // htQRRflHsHZPkgj4
@@ -49,10 +49,10 @@ app.post("/login", async (res, req) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (user) {
-      res.json("user found");
+      res.send("user found");
     }
   } catch (err) {
-    res.json("user not found");
+    res.send("user not found");
   }
 });
 
