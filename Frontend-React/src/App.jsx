@@ -6,7 +6,7 @@ import Layout from "./pages/Layout.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.baseURL = "https://hotel-booking-mern-17sk.onrender.com";
 
 export default function App() {
   return (

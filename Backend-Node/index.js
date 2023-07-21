@@ -31,8 +31,8 @@ app.get("/test", (req, res) => {
 });
 
 app.post("/register", async (req, res) => {
-  const { name, email, password } = req.body;
   try {
+    const { name, email, password } = req.body;
     const user = await User.create({
       name,
       email,
@@ -46,6 +46,7 @@ app.post("/register", async (req, res) => {
 
 app.post("/login", async (res, req) => {
   try {
+    const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (user) {
       res.json("user found");
