@@ -1,11 +1,18 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import axios from "axios";
+import { UserContext } from "../UserContext";
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const { user } = useContext(UserContext);
+  if (user) {
+    return <Navigate to="/" />;
+  }
 
   const registerUser = async (e) => {
     e.preventDefault();
@@ -16,8 +23,10 @@ export default function RegisterPage() {
         password,
       });
       alert("Registration succefull");
+      return navigate("/login");
     } catch (err) {
       alert("Registration failed");
+      console.log("Error while Registering", err);
     }
   };
 

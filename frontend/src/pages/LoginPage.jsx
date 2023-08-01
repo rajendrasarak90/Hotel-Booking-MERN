@@ -1,25 +1,39 @@
 import axios from "axios";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate, Navigate } from "react-router-dom";
+import { UserContext } from "../UserContext";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleRegister = async (e) => {
+  const { user, setUser } = useContext(UserContext);
+
+  if (user) {
+    return <Navigate to="/" />;
+  }
+  const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/login", { email, password });
-      alert("Logged In Successfully");
-    } catch {
-      alert("Logged In Successfully");
+      const response = await axios.post(
+        "/login",
+        { email, password },
+        { withCredentials: true }
+      );
+      setUser(response.data);
+      alert("Login Successful");
+      return navigate("/");
+    } catch (err) {
+      alert("Login Failed");
+      console.log("Error while login", err);
     }
   };
   return (
     <div className="mt-5 grow flex items-center justify-center">
       <div className="mb-64">
         <h1 className="text-4xl text-center my-5 font-normal ">Login</h1>
-        <form className="max-w-md mx-auto" onSubmit={handleRegister}>
+        <form className="max-w-md mx-auto" onSubmit={handleLogin}>
           <input
             type="email"
             placeholder="your@gmail.com"
