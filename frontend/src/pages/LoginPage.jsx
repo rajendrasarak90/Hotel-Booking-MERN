@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, Navigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
 
@@ -8,11 +8,16 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser, places, setPlaces } = useContext(UserContext);
+  useEffect(() => {
+    console.log("user logged in :", user);
+    console.log("places fetched  :", places);
+  }, [user, places]);
 
   if (user) {
     return <Navigate to="/" />;
   }
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -21,7 +26,8 @@ export default function LoginPage() {
         { email, password },
         { withCredentials: true }
       );
-      setUser(response.data);
+      setUser(response.data.user);
+      setPlaces(response.data.places);
       alert("Login Successful");
       return navigate("/");
     } catch (err) {
@@ -29,6 +35,7 @@ export default function LoginPage() {
       console.log("Error while login", err);
     }
   };
+
   return (
     <div className="mt-5 grow flex items-center justify-center">
       <div className="mb-64">

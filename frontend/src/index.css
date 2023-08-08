@@ -2,10 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-input[type="text"], input[type="email"], input[type="password"]{
+input[type="text"], input[type="email"], input[type="password"], textarea, input[type="number"]{
     @apply w-full border px-3 py-2 mb-2 rounded-2xl;
 }
 
 .submit-btn{
     @apply w-full bg-primary px-3 py-2 mb-2 rounded-2xl text-white text-xl;
+}
+
+.place-head{
+    @apply text-2xl mt-4;
+}
+
+.place-short-info{
+    @apply text-gray-500 text-sm mb-1;
+}
+.perk-checkbox{
+    @apply cursor-pointer flex gap-2 border rounded-xl py-4 pl-4;
 }

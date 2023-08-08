@@ -19,6 +19,11 @@ export default function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/profile/:subpage?" element={<ProfilePage />} />
+          <Route path="/profile/:subpage/:action" element={<ProfilePage />} />
+          <Route
+            path="/profile/:subpage/:action/:id"
+            element={<ProfilePage />}
+          />
         </Route>
       </Routes>
     </UserContextProvider>

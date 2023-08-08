@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../UserContext";
 
 export default function Header() {
-  const { user, ready } = useContext(UserContext);
+  const { user, ready, places } = useContext(UserContext);
   if (!ready) {
     return <div>Loading...</div>;
   }
-  console.log("user in profile page", user);
+  console.log("user in Header.jsx", user);
+  console.log("places in Header.jsx", places);
   return (
     <header className="flex justify-between">
       <Link to="/" className="flex items-center gap-1 text-primary">
